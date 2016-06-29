@@ -5,10 +5,13 @@ Rails.application.routes.draw do
 
   get 'fab_plan/download'
 
+  post 'fab_plan/create' => 'fab_plan#upload'
+
   resources :vices
   resources :parallel_plates
   resources :base_plates
   resources :tools
+
   root 'hello#hello'
 
   # The priority is based upon order of creation: first created -> highest priority.

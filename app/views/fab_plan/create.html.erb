@@ -1,2 +1,9 @@
-<h1>FabPlan#create</h1>
-<p>Find me in app/views/fab_plan/create.html.erb</p>
+<h1>New Fabrication Plan</h1>
+
+<p>Part Model</p>
+
+<%= form_tag({action: :upload,}, multipart: true) do %>
+    <p><label for="upload_stl">Select File</label>
+	<%= file_field_tag 'stl_upload' %></p>
+    <%= submit_tag "Upload" %>
+<% end %>
