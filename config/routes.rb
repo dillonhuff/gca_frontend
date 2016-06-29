@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'static_pages/home'
+
+  get 'static_pages/help'
+
   get 'fab_plan/create'
 
   get 'fab_plan/view'
@@ -12,7 +17,7 @@ Rails.application.routes.draw do
   resources :base_plates
   resources :tools
 
-  root 'hello#hello'
+  root 'static_pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
