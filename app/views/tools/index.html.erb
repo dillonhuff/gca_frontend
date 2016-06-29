@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tools</h1>
+
+<table>
+    <thead>
+	<tr>
+	    <th>Material</th>
+	    <th># Flutes</th>
+	    <th>Length</th>
+	    <th>Diameter</th>
+	    <th colspan="4"></th>
+	</tr>
+    </thead>
+
+    <tbody>
+	<% @tools.each do |prediction| %>
+	    <tr>
+		<td><%= prediction.material %></td>
+		<td><%= prediction.numFlutes %></td>
+		<td><%= prediction.length %></td>
+		<td><%= prediction.diameter %></td>
+		<td><%= link_to 'Show', prediction %></td>
+	    </tr>
+	<% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tool', new_tool_path %>

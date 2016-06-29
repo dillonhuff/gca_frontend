@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Tool </h1>
+
+<p>
+    <strong>Material:</strong>
+    <%= @tool.material %>
+</p>
+
+<p>
+    <strong># Flutes:</strong>
+    <%= @tool.numFlutes %>
+</p>
+
+<p>
+    <strong>Diameter:</strong>
+    <%= @tool.diameter %>
+</p>
+
+<p>
+    <strong>Length:</strong>
+    <%= @tool.length %>
+</p>
+
+<%= link_to 'Back', tools_path %>

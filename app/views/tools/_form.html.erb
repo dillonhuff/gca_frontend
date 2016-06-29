@@ -1,0 +1,37 @@
+<%= form_for(@tool) do |f| %>
+    <% if @tool.errors.any? %>
+	<div id="error_explanation">
+	    <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
+
+	    <ul>
+		<% @tool.errors.full_messages.each do |message| %>
+		    <li><%= message %></li>
+		<% end %>
+	    </ul>
+	</div>
+    <% end %>
+
+    <div class="field">
+	<%= f.label :material %><br>
+	<%= f.text_area :material %>
+    </div>
+
+    <div class="field">
+	<%= f.label "Number of Flutes" %><br>
+	<%= f.number_field :numFlutes %>
+    </div>
+    
+    <div class="field">
+	<%= f.label :diameter %><br>
+	<%= f.number_field :diameter, :class => "text_field", :step => "any" %>
+    </div>
+
+    <div class="field">
+	<%= f.label :length %><br>
+	<%= f.number_field :length, :class => "text_field", :step => "any" %>
+    </div>
+
+    <div class="actions">
+	<%= f.submit %>
+    </div>
+<% end %>

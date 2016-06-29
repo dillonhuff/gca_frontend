@@ -1,0 +1,57 @@
+<%= form_for(@vice) do |f| %>
+  <% if @vice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vice.errors.count, "error") %> prohibited this vice from being saved:</h2>
+
+      <ul>
+      <% @vice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "X" %><br>
+    <%= f.text_field :xPos %>
+  </div>
+  <div class="field">
+    <%= f.label "Y" %><br>
+    <%= f.text_field :yPos %>
+  </div>
+  <div class="field">
+    <%= f.label "Z" %><br>
+    <%= f.text_field :zPos %>
+  </div>
+  <div class="field">
+    <%= f.label "X Length" %><br>
+    <%= f.text_field :xLength %>
+  </div>
+  <div class="field">
+    <%= f.label "Y Length" %><br>
+    <%= f.text_field :yLength %>
+  </div>
+  <div class="field">
+    <%= f.label :baseHeight %><br>
+    <%= f.text_field :baseHeight %>
+  </div>
+  <div class="field">
+    <%= f.label :topHeight %><br>
+    <%= f.text_field :topHeight %>
+  </div>
+  <div class="field">
+    <%= f.label :clampWidth %><br>
+    <%= f.text_field :clampWidth %>
+  </div>
+  <div class="field">
+    <%= f.label :maxJawWidth %><br>
+    <%= f.text_field :maxJawWidth %>
+  </div>
+  <div class="field">
+    <%= f.label :protectiveBasePlateHeight %><br>
+    <%= f.text_field :protectiveBasePlateHeight %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

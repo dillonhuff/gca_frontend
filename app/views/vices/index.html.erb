@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Vices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th>Z</th>
+      <th>X Length</th>
+      <th>Y Length</th>
+      <th>Base Height</th>
+      <th>Top Height</th>
+      <th>Clamp Width</th>
+      <th>Max Jaw Width</th>
+      <th>Protective Base Plate Height</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vices.each do |vice| %>
+      <tr>
+        <td><%= vice.xPos %></td>
+        <td><%= vice.yPos %></td>
+        <td><%= vice.zPos %></td>
+        <td><%= vice.xLength %></td>
+        <td><%= vice.yLength %></td>
+        <td><%= vice.baseHeight %></td>
+        <td><%= vice.topHeight %></td>
+        <td><%= vice.clampWidth %></td>
+        <td><%= vice.maxJawWidth %></td>
+        <td><%= vice.protectiveBasePlateHeight %></td>
+        <td><%= link_to 'Show', vice %></td>
+        <td><%= link_to 'Edit', edit_vice_path(vice) %></td>
+        <td><%= link_to 'Destroy', vice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vice', new_vice_path %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Parallel Plates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Height</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parallel_plates.each do |parallel_plate| %>
+      <tr>
+        <td><%= parallel_plate.height %></td>
+        <td><%= link_to 'Show', parallel_plate %></td>
+        <td><%= link_to 'Edit', edit_parallel_plate_path(parallel_plate) %></td>
+        <td><%= link_to 'Destroy', parallel_plate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Parallel plate', new_parallel_plate_path %>
