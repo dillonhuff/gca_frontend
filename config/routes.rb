@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'fab_plan/create'
+
+  get 'fab_plan/view'
+
+  get 'fab_plan/download'
+
   resources :vices
   resources :parallel_plates
   resources :base_plates
