@@ -2,19 +2,23 @@
 
     <script>
      var p;
+     var scene, camera, renderer;
+     var meshes, vice_lists;
+     var current_mesh;
+     var vcolor, mcolor;
+
      window.onload = function() {
 	 var pl = httpGet("/fab_plan/download");
 	 p = JSON.parse(pl);
 
-	 var vcolor = new THREE.MeshLambertMaterial( { color: 0xff0000, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } );
-	 var mcolor = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } );
-	 var meshes = setup_meshes(p, mcolor);
-	 var vice_lists = setup_vice_lists(p, vcolor);
-	 var current_mesh = 0;
+	 vcolor = new THREE.MeshLambertMaterial( { color: 0xff0000, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } );
+	 mcolor = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } );
+	 meshes = setup_meshes(p, mcolor);
+	 vice_lists = setup_vice_lists(p, vcolor);
+	 current_mesh = 0;
 
 	 document.getElementById("gcode_text").value = p.setups[current_mesh].gcode;
 
-	 var scene, camera, renderer;
 	 for (var ind = 0; ind < p.setups.length; ind++)
 	 {
 	     var step_button = document.createElement("input");
@@ -25,7 +29,6 @@
 	     document.getElementById("select_buttons").appendChild(step_button);
 	 }
 	 basic_init();
-	 var edges = new THREE.FaceNormalsHelper( vice_lists[current_mesh][0], 2, 0x00ff00, 1 );
 
 	 scene.add(meshes[current_mesh]);
 	 add_vice_list(vice_lists[current_mesh]);
