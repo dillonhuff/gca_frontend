@@ -1,0 +1,50 @@
+<div id="left_div">
+
+    <script>
+     var p;
+     window.onload = function() {
+	 var pl = httpGet("/meshes/final_plan.json");
+	 p = JSON.parse(pl);
+
+	 var vcolor = new THREE.MeshLambertMaterial( { color: 0xff0000, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } ); /*new THREE.MeshPhongMaterial({ color: 0x00aaff });*/
+	 var mcolor = new THREE.MeshPhongMaterial( { color: 0xaaaaaa, specular: 0xffffff, shininess: 20, shading: THREE.FlatShading } ); /*new THREE.MeshPhongMaterial({ color: 0xaaaaaa });*/
+	 var meshes = setup_meshes(p, mcolor);
+	 var vice_lists = setup_vice_lists(p, vcolor);
+	 var current_mesh = 0;
+
+	 document.getElementById("gcode_text").value = p.setups[current_mesh].gcode;
+
+	 var scene, camera, renderer;
+	 for (var ind = 0; ind < p.setups.length; ind++)
+	 {
+	     var step_button = document.createElement("input");
+	     step_button.setAttribute("type", "button");
+	     step_button.setAttribute("value", ind);
+	     step_button.setAttribute("onclick", "scene.remove(meshes[current_mesh]); current_mesh = " + ind + "; scene.add(meshes[current_mesh]);" +
+						 "document.getElementById(\"gcode_text\").value = p.setups[current_mesh].gcode;");
+	     document.getElementById("select_buttons").appendChild(step_button);
+	 }
+	 basic_init();
+	 var edges = new THREE.FaceNormalsHelper( vice_lists[current_mesh][0], 2, 0x00ff00, 1 );
+	 /*scene.add(edges);*/
+	 scene.add(meshes[current_mesh]);
+	 add_vice_list(vice_lists[current_mesh]);
+	 render();
+     }
+    </script>
+
+    
+    <div id="button_list">
+	<div id="select_buttons">
+	</div>
+    </div>
+
+    <div id="text_box">
+
+	<textarea rows="15" cols="50" id="gcode_text" style="resize: none;"></textarea>
+
+	<script>
+	</script>
+
+    </div>
+</div>
